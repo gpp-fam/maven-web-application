@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    tools
+    {
+        maven 'maven3.6.3'
+    }
+    stages{
+        stage('checkout')
+        {
+            steps{git branch: 'development', credentialsId: 'e2bbd429-aa86-4a95-861a-403b7d7b2f51', url: 'https://github.com/gpp-fam/maven-web-application.git'
+        }
+    }
+stage('build')
+{
+    steps{
+        sh "mvn clean package"
+}
+}
+    }
+    }
